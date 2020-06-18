@@ -7,7 +7,7 @@
 
   import routes from 'src/routes';
 
-  export let name;
+  // export let name;
 
 
   function conditionsFailed(event) {

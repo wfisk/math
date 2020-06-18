@@ -1,10 +1,13 @@
-import HomePage from 'src/pages/HomePage.svelte';
-import MathPage from 'src/pages/MathPage.svelte';
-import NotFoundPage from 'src/pages/NotFoundPage.svelte';
+import HomePage from 'src/routes/home.svelte';
+import MathPage from 'src/routes/math.svelte';
+import NotFoundPage from 'src/routes/not-found.svelte';
 
 export default {
   // Exact path
   '/': HomePage,
   "/math": MathPage,
+
+
+
   '*': NotFoundPage,
 };

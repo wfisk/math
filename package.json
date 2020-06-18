@@ -11,6 +11,7 @@
     "animejs": "^3.2.0",
     "bootstrap": "^4.5.0",
     "cross-env": "^7.0.2",
+    "d3-scale": "^3.2.1",
     "firebase": "^7.15.0",
     "node-sass": "^4.14.1",
     "nollup": "^0.11.1",

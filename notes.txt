@@ -1,0 +1,9 @@
+.prettierrc
+{
+"singleQuote": true,
+"trailingComma": "all",
+"semi": false,
+"jsxSingleQuote": true,
+"svelteSortOrder": "scripts-styles-markup",
+"svelteBracketNewLine": true
+}
