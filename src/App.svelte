@@ -33,6 +33,12 @@
             </a>
 
           </li>
+          <li>
+            <a href="#/fourier">
+              Fourier
+            </a>
+
+          </li>
         </ul>
       </div>
       <div class="col-md-10">

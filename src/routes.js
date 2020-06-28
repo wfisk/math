@@ -1,13 +1,15 @@
-import HomePage from 'src/routes/home.svelte';
-import MathPage from 'src/routes/math.svelte';
-import NotFoundPage from 'src/routes/not-found.svelte';
+import route_home from 'src/routes/home.svelte';
+import route_fourier from 'src/routes/fourier.svelte';
+import route_math from 'src/routes/math.svelte';
+import route_not_found from 'src/routes/not-found.svelte';
 
 export default {
   // Exact path
-  '/': HomePage,
-  "/math": MathPage,
+  '/': route_home,
+  "/fourier": route_fourier,
+  "/math": route_math,
 
 
 
-  '*': NotFoundPage,
+  '*': route_not_found,
 };
