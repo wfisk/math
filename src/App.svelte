@@ -19,7 +19,7 @@
 <template>
   <div class="container-fluid">
     <div class="row" style="min-height: 100vh;">
-      <div class="col-md-2 sidebar">
+      <div class="col-2 sidebar">
         <ul class="list-unstyled">
           <li>
             <a href="#/">
@@ -41,7 +41,7 @@
           </li>
         </ul>
       </div>
-      <div class="col-md-10">
+      <div class="col-10">
         <Router {routes} on:conditionsFailed={conditionsFailed} />
       </div>
 

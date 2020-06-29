@@ -1,11 +1,11 @@
-import svelte from 'rollup-plugin-svelte-hot'
+import svelte from 'rollup-plugin-svelte'
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import livereload from 'rollup-plugin-livereload'
 import {
   terser
 } from 'rollup-plugin-terser'
-import hmr from 'rollup-plugin-hot'
+// import hmr from 'rollup-plugin-hot'
 
 import alias from '@rollup/plugin-alias';
 import json from '@rollup/plugin-json';
@@ -36,7 +36,7 @@ const useLiveReload = !!process.env.LIVERELOAD
 const dev = watch || useLiveReload
 const production = !dev
 
-const hot = watch && !useLiveReload
+// const hot = watch && !useLiveReload
 
 export default {
   input: 'src/main.js',
@@ -57,18 +57,18 @@ export default {
       css: css => {
         css.write('public/build/bundle.css')
       },
-      hot: hot && {
-        // Optimistic will try to recover from runtime
-        // errors during component init
-        optimistic: true,
-        // Turn on to disable preservation of local component
-        // state -- i.e. non exported `let` variables
-        noPreserveState: false,
+      // hot: hot && {
+      //   // Optimistic will try to recover from runtime
+      //   // errors during component init
+      //   optimistic: true,
+      //   // Turn on to disable preservation of local component
+      //   // state -- i.e. non exported `let` variables
+      //   noPreserveState: false,
 
-        // See docs of rollup-plugin-svelte-hot for all available options:
-        //
-        // https://github.com/rixo/rollup-plugin-svelte-hot#usage
-      },
+      //   // See docs of rollup-plugin-svelte-hot for all available options:
+      //   //
+      //   // https://github.com/rixo/rollup-plugin-svelte-hot#usage
+      // },
 
 
       preprocess: autoPreprocess({
@@ -99,29 +99,30 @@ export default {
 
     // Watch the `public` directory and refresh the
     // browser on changes when not in production
-    useLiveReload && livereload('public'),
+    // useLiveReload && livereload('public'),
+    !production && livereload('public'),
 
     // If we're building for production (npm run build
     // instead of npm run dev), minify
     production && terser(),
 
 
-    hmr({
-      public: 'public',
-      inMemory: true,
+    // hmr({
+    //   public: 'public',
+    //   inMemory: true,
 
-      // Default host for the HMR server is localhost, change this option if
-      // you want to serve over the network
-      // host: '0.0.0.0',
-      // You can also change the default HMR server port, if you fancy
-      // port: '12345'
+    //   // Default host for the HMR server is localhost, change this option if
+    //   // you want to serve over the network
+    //   // host: '0.0.0.0',
+    //   // You can also change the default HMR server port, if you fancy
+    //   // port: '12345'
 
-      // This is needed, otherwise Terser (in npm run build) chokes
-      // on import.meta. With this option, the plugin will replace
-      // import.meta.hot in your code with module.hot, and will do
-      // nothing else.
-      compatModuleHot: !hot,
-    }),
+    //   // This is needed, otherwise Terser (in npm run build) chokes
+    //   // on import.meta. With this option, the plugin will replace
+    //   // import.meta.hot in your code with module.hot, and will do
+    //   // nothing else.
+    //   compatModuleHot: !hot,
+    // }),
 
     alias({
       resolve: ['.js', '.json', '.scss', '.svelte'],

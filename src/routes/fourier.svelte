@@ -1,5 +1,11 @@
 <script>
   import {
+    onMount
+  } from 'svelte';
+  import {
+    fade
+  } from 'svelte/transition';
+  import {
     range as d3Range,
   } from 'd3-array';
   import {
@@ -11,6 +17,9 @@
   import {
     line as d3Line
   } from 'd3-shape';
+  import {
+    transition as d3Transition,
+  } from 'd3-transition';
 
   let π = Math.PI;
   let τ = 2 * Math.PI;
@@ -128,27 +137,38 @@
     return "translate(" + xAxis(d.f) + "," + yCirc(0) + ")";
   }
 
-  let svg = d3Select(".fourier")
-    .append("svg")
-    .attr("width", W)
-    .attr("height", H)
 
-  svg.append("line")
-    .attr("class", "axis")
-    .attr("y1", margin.top + yCirc(0)).attr("x1", 0)
-    .attr("y2", margin.top + yCirc(0)).attr("x2", W);
 
-  svg.append("line")
-    .attr("class", "axis")
-    .attr("x1", margin.left + xCirc(0)).attr("y1", 0)
-    .attr("x2", margin.left + xCirc(0)).attr("y2", H);
+  // let svg = d3Select(".fourier")
+  //   .append("svg")
+  //   .attr("width", W)
+  //   .attr("height", H)
+  let svg;
 
-  let vis = svg.append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  // svg.append("line")
+  //   .attr("class", "axis")
+  //   .attr("y1", margin.top + yCirc(0))
+  //   .attr("x1", 0)
+  //   .attr("y2", margin.top + yCirc(0))
+  //   .attr("x2", W);
 
-  let gPath = vis.append("path").attr("class", "graph");
-  let tPath = vis.append("path").attr("class", "trace");
-  let pPath = vis.append("path").attr("class", "proj");
+  // svg.append("line")
+  //   .attr("class", "axis")
+  //   .attr("x1", margin.left + xCirc(0))
+  //   .attr("y1", 0)
+  //   .attr("x2", margin.left + xCirc(0))
+  //   .attr("y2", H);
+
+  // let vis = svg.append("g")
+  //   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  // let gPath = vis.append("path").attr("class", "graph");
+  // let tPath = vis.append("path").attr("class", "trace");
+  // let pPath = vis.append("path").attr("class", "proj");
+  let graphPath, tracePath, projPath;
+  $: gPath = d3Select(graphPath);
+  $: tPath = d3Select(tracePath);
+  $: pPath = d3Select(projPath);
 
   function cache() {
     let A;
@@ -187,8 +207,11 @@
     return data;
   }
 
+  let vis;
+
   function coeff() {
-    let co = vis.selectAll(".coeff").data(calc());
+
+    let co = d3Select(vis).selectAll(".coeff").data(calc());
 
     // exit
     co.exit().remove();
@@ -297,13 +320,32 @@
     redraw();
   });
 
+  function handleGraphClick(event) {
+    (draw === drawHisto) ? toggleGraph(): toggleHisto();
+  }
+
   draw = drawGraph;
-  play();
+
+  onMount(function () {
+    play();
+  });
 </script>
 
 
 <template>
-  <div class="fourier">
+  <div class="fourier" in:fade={{duration: 800}}>
+    <svg bind:this={svg} width={W} height={H} on:click={ handleGraphClick }>
+      <line class="axis" x1="0" y1={margin.top + yCirc(0)} x2={W} y2={margin.top + yCirc(0)} />
+      <line class="axis" x1={margin.left + xCirc(0)} y1="0" x2={margin.left + xCirc(0)} y2={H} />
+
+      <g bind:this={vis} transform={`translate( ${margin.left}, ${margin.top} )`}>
+        <path class="graph" bind:this={graphPath} />
+        <path class="trace" bind:this={tracePath} />
+        <path class="proj" bind:this={projPath} />
+      </g>
+    </svg>
+
+
     <form>
       <p>
         <select id="type">
@@ -325,8 +367,7 @@
     font: 13px/13px "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin: auto;
     position: relative;
-    width:
-      960px;
+    width: 960px;
   }
 
   form {
@@ -339,27 +380,25 @@
     display: none;
   }
 
-  .coeff .dot {
-    fill:
-      hsla(207, 63%, 27%, 0.2);
+  .fourier :global(.coeff .dot) {
+    fill: hsla(207, 63%, 27%, 0.2);
   }
 
-  .coeff.last .dot {
+  .fourier :global(.coeff.last .dot) {
     fill: hsla(207, 63%, 27%, 1.0);
   }
 
-  .coeff .circle {
+  .fourier :global(.coeff .circle) {
     fill: none;
-    stroke:
-      hsl(0, 0%, 70%);
+    stroke: hsl(0, 0%, 70%);
   }
 
-  .coeff.first .circle {
+  .fourier :global(.coeff.first .circle) {
     fill: none;
     stroke: hsl(0, 0%, 30%);
   }
 
-  .coeff.last .circle {
+  .fourier :global(.coeff.last .circle) {
     display: none;
   }
 
@@ -375,8 +414,7 @@
   }
 
   .proj {
-    fill:
-      none;
+    fill: none;
     stroke: #000;
   }
 

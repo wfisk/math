@@ -3,6 +3,10 @@
     beforeUpdate,
     afterUpdate
   } from 'svelte';
+  import {
+    fade
+  } from 'svelte/transition';
+
 
   import anime from 'animejs';
   import {
@@ -88,15 +92,16 @@
 
 <template>
   <svelte:window bind:innerWidth={width} bind:innerHeight={height} on:keydown={handleKeyDown} />
-  {width}, {height}
+  <div in:fade={{duration:800}}>
+    {width}, {height}
 
-  <h1>Math</h1>
-  <article>
-    <div class="blue"></div>
-    <div class="green"></div>
-  </article>
+    <h1>Math</h1>
+    <article>
+      <div class="blue"></div>
+      <div class="green"></div>
+    </article>
 
-  {#if !!width && !!height && !!xScale && !!yScale && !!xTicks && !!yTicks }
+    {#if !!width && !!height && !!xScale && !!yScale && !!xTicks && !!yTicks }
     <svg viewbox="0 0 1000 1000" width="800" height="600">
 
       <g class='axis y-axis'>
@@ -142,7 +147,7 @@
 
 
   
-
+</div>
 </template>
 
 <style>

@@ -1,3 +1,10 @@
+<script>
+  import {
+    fade
+  } from 'svelte/transition';
+</script>
 <template>
-  <h1>Home</h1>
+  <div in:fade={{duration:800}}>
+    <h1>Home</h1>
+  </div>
 </template>
