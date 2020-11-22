@@ -170,6 +170,15 @@
   $: tPath = d3Select(tracePath);
   $: pPath = d3Select(projPath);
 
+
+  cache();
+  let graphData = '';
+  let traceData = '';
+  $: theta, graphData = graph(gDomain);
+  $: theta, traceData = trace(tDomain);
+
+
+
   function cache() {
     let A;
     if (typeof C === "function") {
@@ -223,16 +232,9 @@
     en.append("circle").attr("class", "dot").attr("r", 3);
 
     // update
-    co.classed("last", function (d, i) {
-      return i === L - 1;
-    });
-    co.classed("first", function (d, i) {
-      return i === 0;
-    });
-
-    co.select(".circle").attr("r", function (d) {
-      return rAxis(d.r);
-    })
+    co.classed("last", (_, i) => i === L - 1);
+    co.classed("first", (_, i) => !i);
+    co.select(".circle").attr("r", (d) => rAxis(d.r));
 
     return co;
   }
@@ -245,8 +247,8 @@
       x: 0,
       y: last.y
     }]));
-    gPath.attr("d", graph(gDomain));
-    tPath.attr("d", trace(tDomain));
+    // gPath.attr("d", graph(gDomain));
+    // tPath.attr("d", trace(tDomain));
   }
 
   function drawHisto() {
@@ -268,18 +270,18 @@
   function toggleGraph() {
     xAxis.domain([0, xmax]);
     toggle(function () {
-      pPath.classed("hide", false);
-      gPath.classed("hide", false);
-      tPath.classed("hide", false);
+      // pPath.classed("hide", false);
+      // gPath.classed("hide", false);
+      // tPath.classed("hide", false);
       play();
     });
   }
 
   function toggleHisto() {
     xAxis.domain([1, L]);
-    pPath.classed("hide", true);
-    gPath.classed("hide", true);
-    tPath.classed("hide", true);
+    // pPath.classed("hide", true);
+    // gPath.classed("hide", true);
+    // tPath.classed("hide", true);
     pause();
     toggle(drawHisto);
   }
@@ -339,9 +341,9 @@
       <line class="axis" x1={margin.left + xCirc(0)} y1="0" x2={margin.left + xCirc(0)} y2={H} />
 
       <g bind:this={vis} transform={`translate( ${margin.left}, ${margin.top} )`}>
-        <path class="graph" bind:this={graphPath} />
-        <path class="trace" bind:this={tracePath} />
-        <path class="proj" bind:this={projPath} />
+        <path class="graph" class:hide={draw==drawHisto} bind:this={graphPath} d={graphData} />
+        <path class="trace" class:hide={draw==drawHisto} bind:this={tracePath} d={traceData} />
+        <path class="proj" class:hide={draw==drawHisto} bind:this={projPath} />
       </g>
     </svg>
 
@@ -357,7 +359,9 @@
         </select>
         <input id="size" type="number" value="6" min="1" max="40" step="1">
       </p>
-      <p><input id="freq" type="range" value="0.3" min="0.01" max="0.5" step="0.01"> <label>Speed</label></p>
+      <p>
+        <input id="freq" type="range" value="0.3" min="0.01" max="0.5" step="0.01">
+        <label for="freq">Speed</label></p>
     </form>
   </div>
 </template>

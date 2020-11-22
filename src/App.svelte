@@ -1,14 +1,10 @@
 <script>
   import Router from "svelte-spa-router";
-  import {
-    wrap,
-    replace
-  } from "svelte-spa-router";
+  import { wrap, replace } from "svelte-spa-router";
 
-  import routes from 'src/routes';
+  import routes from "./routes";
 
   // export let name;
-
 
   function conditionsFailed(event) {
     // Perform any action, for example replacing the current route
@@ -16,47 +12,7 @@
   }
 </script>
 
-<template>
-  <div class="container-fluid">
-    <div class="row" style="min-height: 100vh;">
-      <div class="col-2 sidebar">
-        <ul class="list-unstyled">
-          <li>
-            <a href="#/">
-              Home
-            </a>
-
-          </li>
-          <li>
-            <a href="#/math">
-              Math
-            </a>
-
-          </li>
-          <li>
-            <a href="#/fourier">
-              Fourier
-            </a>
-
-          </li>
-        </ul>
-      </div>
-      <div class="col-10">
-        <Router {routes} on:conditionsFailed={conditionsFailed} />
-      </div>
-
-    </div>
-
-  </div>
-
-
-</template>
-
-
-
 <style global lang="scss">
-  @import "styles/global.scss";
-
   main {
     text-align: center;
     padding: 1em;
@@ -82,3 +38,18 @@
     }
   }
 </style>
+
+<div class="container-fluid">
+  <div class="row" style="min-height: 100vh;">
+    <div class="col-2 sidebar">
+      <ul class="list-unstyled">
+        <li><a href="#/"> Home </a></li>
+        <li><a href="#/math"> Math </a></li>
+        <li><a href="#/fourier"> Fourier </a></li>
+      </ul>
+    </div>
+    <div class="col-10">
+      <Router {routes} on:conditionsFailed={conditionsFailed} />
+    </div>
+  </div>
+</div>

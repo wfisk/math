@@ -1,4 +1,4 @@
-import Model from 'src/models/Model';
+import Model from './Model';
 
 export default class MediaItem extends Model {
 
@@ -7,11 +7,11 @@ export default class MediaItem extends Model {
   }
 
 
-  constructor( ...args ) {
-    super( ...args );
+  constructor(...args) {
+    super(...args);
 
-    if ( this.mediaType === 'audio' ) {
-      this.lyrics || ( this.lyrics = [] );
+    if (this.mediaType === 'audio') {
+      this.lyrics || (this.lyrics = []);
     }
   }
 

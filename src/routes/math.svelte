@@ -16,7 +16,7 @@
     extent
   } from 'd3-array';
 
-  import ChartAxis from 'src/components/charts/ChartAxis.svelte';
+  import ChartAxis from '../components/charts/ChartAxis.svelte';
 
   let width;
   let height;
@@ -89,9 +89,9 @@
 
 
 
+<svelte:window bind:innerWidth={width} bind:innerHeight={height} on:keydown={handleKeyDown} />
 
 <template>
-  <svelte:window bind:innerWidth={width} bind:innerHeight={height} on:keydown={handleKeyDown} />
   <div in:fade={{duration:800}}>
     {width}, {height}
 

@@ -1,7 +1,7 @@
-import route_home from 'src/routes/home.svelte';
-import route_fourier from 'src/routes/fourier.svelte';
-import route_math from 'src/routes/math.svelte';
-import route_not_found from 'src/routes/not-found.svelte';
+import route_home from './routes/home.svelte';
+import route_fourier from './routes/fourier.svelte';
+import route_math from './routes/math.svelte';
+import route_not_found from './routes/not-found.svelte';
 
 export default {
   // Exact path

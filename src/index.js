@@ -1,12 +1,13 @@
-import App from "./App.svelte";
-import "./styles/global.scss";
+import App from './App.svelte'
 
 const app = new App({
   target: document.body,
-  props: {},
-});
+  props: {
 
-export default app;
+  },
+})
+
+export default app
 
 // recreate the whole app if an HMR update touches this module
 // if (
