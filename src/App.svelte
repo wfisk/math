@@ -2,7 +2,7 @@
   import Router from "svelte-spa-router";
   import { wrap, replace } from "svelte-spa-router";
 
-  import routes from "./routes";
+  import routes from "/src/config/routes";
 
   // export let name;
 
