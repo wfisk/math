@@ -21,10 +21,23 @@
 </script>
 
 <Navbar color="light" light expand="md">
-  <NavbarBrand href="/">sveltestrap</NavbarBrand>
+  <NavbarBrand href="/">math</NavbarBrand>
   <NavbarToggler on:click={() => (isOpen = !isOpen)} />
   <Collapse {isOpen} navbar expand="md" on:update={handleUpdate}>
-    <Nav class="ml-auto" navbar>
+    <Nav class="" navbar>
+      <UncontrolledDropdown nav inNavbar>
+        <DropdownToggle nav caret>Geometry</DropdownToggle>
+        <DropdownMenu>
+          <DropdownItem tag="a" href="#/math/geometry/example-1" active>
+            Example 1
+          </DropdownItem>
+          <DropdownItem tag="a" href="#/math/geometry/example-2" active>
+            Example 2
+          </DropdownItem>
+          <DropdownItem divider />
+          <DropdownItem>Reset</DropdownItem>
+        </DropdownMenu>
+      </UncontrolledDropdown>
       <NavItem>
         <NavLink href="#components/">Components</NavLink>
       </NavItem>

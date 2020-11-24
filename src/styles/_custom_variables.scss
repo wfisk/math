@@ -1,0 +1,91 @@
+$primary-01: #e9f4ea;
+$primary-02: #d7ead9;
+$primary-03: #c6e1c8;
+$primary-04: #a8d4b3;
+$primary-05: #88c697;
+$primary-06: #57af80;
+$primary-07: #009f6e;
+$primary-08: #00895f;
+$primary-09: #00684b;
+$primary-10: #005548;
+$primary-11: #003837;
+$primary-12: #002d2e;
+
+$gray-01: #eff2f4;
+$gray-02: #dfe6ea;
+$gray-03: #d5dadd;
+$gray-04: #c6cacc;
+$gray-05: #b2b8bc;
+$gray-06: #99a0a5;
+$gray-07: #80878b;
+$gray-08: #686e71;
+$gray-09: #55595b;
+$gray-10: #3c4448;
+$gray-11: #262f32;
+$gray-12: #1c2629;
+
+$moscow: #901526;
+$moscow-100: scale-color($moscow, $lightness: 0%);
+$moscow-075: scale-color($moscow, $lightness: 25%);
+$moscow-050: scale-color($moscow, $lightness: 50%);
+$moscow-025: scale-color($moscow, $lightness: 75%);
+
+$delhi: #e03a4c;
+$delhi-100: scale-color($delhi, $lightness: 0%);
+$delhi-075: scale-color($delhi, $lightness: 25%);
+$delhi-050: scale-color($delhi, $lightness: 50%);
+$delhi-025: scale-color($delhi, $lightness: 75%);
+
+$sao-paulo: #e5989f;
+$sao-paulo-100: scale-color($sao-paulo, $lightness: 0%);
+$sao-paulo-075: scale-color($sao-paulo, $lightness: 25%);
+$sao-paulo-050: scale-color($sao-paulo, $lightness: 50%);
+$sao-paulo-025: scale-color($sao-paulo, $lightness: 75%);
+
+$shanghai: #f28b32;
+$shanghai-100: scale-color($shanghai, $lightness: 0%);
+$shanghai-075: scale-color($shanghai, $lightness: 25%);
+$shanghai-050: scale-color($shanghai, $lightness: 50%);
+$shanghai-025: scale-color($shanghai, $lightness: 75%);
+
+$new-york: #fed812;
+$new-york-100: scale-color($new-york, $lightness: 0%);
+$new-york-075: scale-color($new-york, $lightness: 25%);
+$new-york-050: scale-color($new-york, $lightness: 50%);
+$new-york-025: scale-color($new-york, $lightness: 75%);
+
+$oslo: #93d5f6;
+$oslo-100: scale-color($oslo, $lightness: 0%);
+$oslo-075: scale-color($oslo, $lightness: 25%);
+$oslo-050: scale-color($oslo, $lightness: 50%);
+$oslo-025: scale-color($oslo, $lightness: 75%);
+
+$toronto: #1f7dbc;
+$toronto-100: scale-color($toronto, $lightness: 0%);
+$toronto-075: scale-color($toronto, $lightness: 25%);
+$toronto-050: scale-color($toronto, $lightness: 50%);
+$toronto-025: scale-color($toronto, $lightness: 75%);
+
+$sydney: #9f86be;
+$sydney-100: scale-color($sydney, $lightness: 0%);
+$sydney-075: scale-color($sydney, $lightness: 25%);
+$sydney-050: scale-color($sydney, $lightness: 50%);
+$sydney-025: scale-color($sydney, $lightness: 75%);
+
+$cairo: #4f2f6c;
+$cairo-100: scale-color($cairo, $lightness: 0%);
+$cairo-075: scale-color($cairo, $lightness: 25%);
+$cairo-050: scale-color($cairo, $lightness: 50%);
+$cairo-025: scale-color($cairo, $lightness: 75%);
+
+$emc: #8a2658;
+$mba: #f18757;
+$emf: #008fb0;
+$gemba: #8a75b3;
+
+$primary: $primary-09;
+$info: $oslo;
+$link: $toronto;
+$success: $primary-06;
+$warning: $shanghai;
+$danger: $delhi;

@@ -1,6 +1,6 @@
-@charset "utf-8";
-@import "src/styles/variables.scss";
-@import "src/styles/bootstrap.scss";
+@import "node_modules/bootstrap/scss/functions.scss";
+@import "src/styles/custom_variables.scss";
+@import "src/styles/custom_bootstrap.scss";
 
 // your global styles
 

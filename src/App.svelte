@@ -1,7 +1,8 @@
 <script>
   import Router from "svelte-spa-router";
-  import { wrap, replace } from "svelte-spa-router";
+  import { replace as routeReplace } from "svelte-spa-router";
 
+  import DefaultNavbar from "/src/components/navbars/DefaultNavbar.svelte";
   import routes from "/src/config/routes";
 
   // export let name;
@@ -12,7 +13,10 @@
   }
 </script>
 
-<style global lang="scss">
+<DefaultNavbar />
+<Router {routes} on:conditionsFailed={conditionsFailed} />
+
+<style lang="scss">
   main {
     text-align: center;
     padding: 1em;
@@ -38,18 +42,3 @@
     }
   }
 </style>
-
-<div class="container-fluid">
-  <div class="row" style="min-height: 100vh;">
-    <div class="col-2 sidebar">
-      <ul class="list-unstyled">
-        <li><a href="#/"> Home </a></li>
-        <li><a href="#/math"> Math </a></li>
-        <li><a href="#/fourier"> Fourier </a></li>
-      </ul>
-    </div>
-    <div class="col-10">
-      <Router {routes} on:conditionsFailed={conditionsFailed} />
-    </div>
-  </div>
-</div>
