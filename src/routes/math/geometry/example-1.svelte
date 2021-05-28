@@ -1,6 +1,5 @@
 <script>
   import { beforeUpdate, afterUpdate } from "svelte";
-  import { fade } from "svelte/transition";
 
   import anime from "animejs";
   import { scaleLinear } from "d3-scale";
@@ -67,6 +66,7 @@
       cx -= 10;
     }
   }
+
 </script>
 
 <svelte:window
@@ -74,60 +74,59 @@
   bind:innerHeight={height}
   on:keydown={handleKeyDown} />
 
-<template>
-  <div in:fade={{ duration: 800 }}>
-    {width},
-    {height}
+<div>
+  {width},
+  {height}
 
-    <h1>Math</h1>
-    <article>
-      <div class="blue" />
-      <div class="green" />
-    </article>
+  <h1>Math</h1>
+  <article>
+    <div class="blue" />
+    <div class="green" />
+  </article>
 
-    {#if !!width && !!height && !!xScale && !!yScale && !!xTicks && !!yTicks}
-      <svg viewbox="0 0 1000 1000" width="800" height="600">
-        <g class="axis y-axis">
-          {#each yTicks as tick}
-            <ChartAxis
-              axisType="yAxis"
-              translate="translate(0, {yScale(tick)})"
-              x1={xScale(0)}
-              x2={xScale(extent(xTicks)[1])}
-              x={margins.left - 8}
-              y="+4"
-              text={tick} />
-          {/each}
-        </g>
+  {#if !!width && !!height && !!xScale && !!yScale && !!xTicks && !!yTicks}
+    <svg viewbox="0 0 1000 1000" width="800" height="600">
+      <g class="axis y-axis">
+        {#each yTicks as tick}
+          <ChartAxis
+            axisType="yAxis"
+            translate="translate(0, {yScale(tick)})"
+            x1={xScale(0)}
+            x2={xScale(extent(xTicks)[1])}
+            x={margins.left - 8}
+            y="+4"
+            text={tick} />
+        {/each}
+      </g>
 
-        <!-- x axis -->
-        <g class="axis x-axis">
-          {#each xTicks as tick}
-            <ChartAxis
-              axisType="xAxis"
-              translate="translate({xScale(tick)},0)"
-              y1={yScale(0)}
-              y2={yScale(extent(yTicks)[1])}
-              y={height - margins.bottom + 16}
-              text={tick} />
-          {/each}
-        </g>
+      <!-- x axis -->
+      <g class="axis x-axis">
+        {#each xTicks as tick}
+          <ChartAxis
+            axisType="xAxis"
+            translate="translate({xScale(tick)},0)"
+            y1={yScale(0)}
+            y2={yScale(extent(yTicks)[1])}
+            y={height - margins.bottom + 16}
+            text={tick} />
+        {/each}
+      </g>
 
-        <circle class="circle" {cx} {cy} r="100" />
+      <circle class="circle" {cx} {cy} r="100" />
 
-        <path
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1"
-          d="M8,56 C8,33.90861 25.90861,16 48,16 C70.09139,16 88,33.90861 88,56 C88,78.09139 105.90861,92 128,92 C150.09139,92 160,72 160,56 C160,40 148,24 128,24 C108,24 96,40 96,56 C96,72 105.90861,92 128,92 C154,93 168,78 168,56 C168,33.90861 185.90861,16 208,16 C230.09139,16 248,33.90861 248,56 C248,78.09139 230.09139,96 208,96 L48,96 C25.90861,96 8,78.09139 8,56 Z" />
+      <path
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        d="M8,56 C8,33.90861 25.90861,16 48,16 C70.09139,16 88,33.90861 88,56 C88,78.09139 105.90861,92 128,92 C150.09139,92 160,72 160,56 C160,40 148,24 128,24 C108,24 96,40 96,56 C96,72 105.90861,92 128,92 C154,93 168,78 168,56 C168,33.90861 185.90861,16 208,16 C230.09139,16 248,33.90861 248,56 C248,78.09139 230.09139,96 208,96 L48,96 C25.90861,96 8,78.09139 8,56 Z" />
 
-        <path
-          class="path"
-          d="M {cx - radius}, {cy} a {radius},{radius} 0 1,0 {radius * 2},0 a {radius},{radius} 0 1,0 {-radius * 2},0" />
-      </svg>
-    {/if}
-  </div>
-</template>
+      <path
+        class="path"
+        d="M {cx - radius}, {cy} a {radius},{radius} 0 1,0 {radius *
+          2},0 a {radius},{radius} 0 1,0 {-radius * 2},0" />
+    </svg>
+  {/if}
+</div>
 
 <style>
   div {
@@ -153,4 +152,5 @@
     fill: transparent;
     stroke: red;
   }
+
 </style>

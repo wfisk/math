@@ -11,9 +11,11 @@
     // Perform any action, for example replacing the current route
     replace("/");
   }
+
 </script>
 
 <DefaultNavbar />
+
 <Router {routes} on:conditionsFailed={conditionsFailed} />
 
 <style lang="scss">
@@ -41,4 +43,5 @@
       max-width: none;
     }
   }
+
 </style>

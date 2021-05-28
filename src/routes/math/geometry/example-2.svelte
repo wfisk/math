@@ -1,6 +1,5 @@
 <script>
   import { onMount } from "svelte";
-  import { fade } from "svelte/transition";
   import { range as d3Range } from "d3-array";
   import { scaleLinear as d3ScaleLinear } from "d3-scale";
   import { select as d3Select } from "d3-selection";
@@ -318,68 +317,62 @@
   onMount(function () {
     play();
   });
+
 </script>
 
-<template>
-  <div class="fourier" in:fade={{ duration: 800 }}>
-    <svg bind:this={svg} width={W} height={H} on:click={handleGraphClick}>
-      <line
-        class="axis"
-        x1="0"
-        y1={margin.top + yCirc(0)}
-        x2={W}
-        y2={margin.top + yCirc(0)} />
-      <line
-        class="axis"
-        x1={margin.left + xCirc(0)}
-        y1="0"
-        x2={margin.left + xCirc(0)}
-        y2={H} />
+<div class="fourier">
+  <svg bind:this={svg} width={W} height={H} on:click={handleGraphClick}>
+    <line
+      class="axis"
+      x1="0"
+      y1={margin.top + yCirc(0)}
+      x2={W}
+      y2={margin.top + yCirc(0)} />
+    <line
+      class="axis"
+      x1={margin.left + xCirc(0)}
+      y1="0"
+      x2={margin.left + xCirc(0)}
+      y2={H} />
 
-      <g
-        bind:this={vis}
-        transform={`translate( ${margin.left}, ${margin.top} )`}>
-        <path
-          class="graph"
-          class:hide={draw == drawHisto}
-          bind:this={graphPath}
-          d={graphData} />
-        <path
-          class="trace"
-          class:hide={draw == drawHisto}
-          bind:this={tracePath}
-          d={traceData} />
-        <path
-          class="proj"
-          class:hide={draw == drawHisto}
-          bind:this={projPath} />
-      </g>
-    </svg>
+    <g bind:this={vis} transform={`translate( ${margin.left}, ${margin.top} )`}>
+      <path
+        class="graph"
+        class:hide={draw == drawHisto}
+        bind:this={graphPath}
+        d={graphData} />
+      <path
+        class="trace"
+        class:hide={draw == drawHisto}
+        bind:this={tracePath}
+        d={traceData} />
+      <path class="proj" class:hide={draw == drawHisto} bind:this={projPath} />
+    </g>
+  </svg>
 
-    <form>
-      <p>
-        <select id="type">
-          <option value="square">Square</option>
-          <option value="triangle">Triangle</option>
-          <option value="sawtooth">Sawtooth</option>
-          <option value="fibonacci">Fibonacci</option>
-          <option value="pulse">Pulse</option>
-        </select>
-        <input id="size" type="number" value="6" min="1" max="40" step="1" />
-      </p>
-      <p>
-        <input
-          id="freq"
-          type="range"
-          value="0.3"
-          min="0.01"
-          max="0.5"
-          step="0.01" />
-        <label for="freq">Speed</label>
-      </p>
-    </form>
-  </div>
-</template>
+  <form>
+    <p>
+      <select id="type">
+        <option value="square">Square</option>
+        <option value="triangle">Triangle</option>
+        <option value="sawtooth">Sawtooth</option>
+        <option value="fibonacci">Fibonacci</option>
+        <option value="pulse">Pulse</option>
+      </select>
+      <input id="size" type="number" value="6" min="1" max="40" step="1" />
+    </p>
+    <p>
+      <input
+        id="freq"
+        type="range"
+        value="0.3"
+        min="0.01"
+        max="0.5"
+        step="0.01" />
+      <label for="freq">Speed</label>
+    </p>
+  </form>
+</div>
 
 <style>
   div {
@@ -440,4 +433,5 @@
   .axis {
     stroke: hsl(0, 0%, 70%);
   }
+
 </style>
