@@ -2634,10 +2634,10 @@ svelte-typewriter@^2.4.5:
   resolved "https://registry.yarnpkg.com/svelte-typewriter/-/svelte-typewriter-2.4.5.tgz#64565cdfc28cb5beebb77a789a393d8f979efdc6"
   integrity sha512-ObsLgIuLkZ14noqTHf6KNZCYgL8xqoJN6S1IaTJoaMBE1pG3MaqpVorXfCn5uQcFzzThfwoGyiYvjyRFQI3fbw==
 
-svelte@^3.38.2:
-  version "3.38.2"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.38.2.tgz#55e5c681f793ae349b5cc2fe58e5782af4275ef5"
-  integrity sha512-q5Dq0/QHh4BLJyEVWGe7Cej5NWs040LWjMbicBGZ+3qpFWJ1YObRmUDZKbbovddLC9WW7THTj3kYbTOFmU9fbg==
+svelte@^3.49.0:
+  version "3.49.0"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.49.0.tgz#5baee3c672306de1070c3b7888fc2204e36a4029"
+  integrity sha512-+lmjic1pApJWDfPCpUUTc1m8azDqYCG1JN9YEngrx/hUyIcFJo6VZhj0A1Ai0wqoHcEIuQy+e9tk+4uDgdtsFA==
 
 sveltestrap@^5.0.5:
   version "5.0.6"
