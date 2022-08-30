@@ -40,7 +40,7 @@
     "svelte-spa-router": "^3.1.0",
     "svelte-typewriter": "^2.4.5",
     "sveltestrap": "^5.0.5",
-    "vite": "^2.3.3"
+    "vite": "^2.9.13"
   },
   "dependencies": {},
   "scripts": {
